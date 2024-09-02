@@ -1,7 +1,7 @@
 const express = require('express');
 const apiNotesRouter = express.Router();
 const { readFile, appendToDatabase } = require('../utility/routerUtil');
-const uu = require('uuid')
+const {v4: uuidv4} = require('uuid')
 
 // Add json parser middleware
 apiNotesRouter.use(express.json())
@@ -19,7 +19,7 @@ apiNotesRouter.post('/', (req, res) => {
   const { title, text } = req.body;
 
   if(title && text){
-    appendToDatabase({ title: title, text: text, id: uu.uuidv4()});
+    appendToDatabase({ title: title, text: text, id: uuidv4()});
   }
 
   res.status(200).send();
