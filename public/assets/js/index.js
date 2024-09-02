@@ -104,7 +104,17 @@ const handleNoteDelete = (e) => {
 // Sets the activeNote and displays it
 const handleNoteView = (e) => {
   e.preventDefault();
-  activeNote = JSON.parse(e.target.getAttribute('data-note'));
+  const tagName = e.target.tagName;
+  let noteData;
+
+  if(tagName == 'SPAN'){
+    noteData = e.target.parentElement.getAttribute('data-note');
+  }
+  else {
+    noteData = e.target.getAttribute('data-note');
+  }
+
+  activeNote = JSON.parse(noteData);
   renderActiveNote();
 };
 
