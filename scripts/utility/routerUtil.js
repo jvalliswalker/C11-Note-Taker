@@ -21,9 +21,20 @@ function writeFile(filePath, data){
 
 function appendToDatabase(data){
   const database = readFile('/db/db.json', true);
-  console.log('db: '+JSON.stringify(database));
   database.push(data);
   writeFile('/db/db.json', database);
 }
 
-module.exports = { readFile, appendToDatabase };
+function deleteNoteFromDatabase(noteId){
+  const database = readFile('/db/db.json', true);
+
+  for (let i = 0; i < database.length; i++) {
+    if(database[i].id == noteId){
+      database.splice(i,1);
+    }
+  }
+
+  writeFile('/db/db.json', database);
+}
+
+module.exports = { readFile, appendToDatabase, deleteNoteFromDatabase };
