@@ -8,7 +8,7 @@ app.use('/api', router);
 app.use(express.static('public'))
 
 app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/notes.html'));
+    res.status(200).sendFile(path.join(__dirname, '/public/notes.html'));
 });
 
 app.listen(PORT, () => {
