@@ -10,7 +10,7 @@ apiNotesRouter.use(express.json())
 apiNotesRouter.get('/', (req, res) => {
   console.log('/api/notes GET call received');
   const apiNotesRouterData = readFile('/db/db.json', true);
-  res.send(apiNotesRouterData);
+  res.status(200).send(apiNotesRouterData);
 })
 
 // Add POST endpoint handling

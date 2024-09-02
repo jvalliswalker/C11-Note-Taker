@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const basePath = __dirname.replace('scripts\\utility','');
+const basePath = __dirname.replace(/scripts.utility/,'');
 
 function readFile(filePath, parseJson=false){
   const localPath = path.join(basePath, filePath);
